@@ -2,7 +2,7 @@
 
 A Python-based QA Engineering project that transforms software requirements into structured test cases, BDD/Gherkin scenarios, test data, edge cases, priorities, and Playwright automation code.
 
-The project currently provides a rule-based test generation foundation and is designed for future integration with Generative AI and Large Language Models (LLMs).
+The project combines a rule-based test generation foundation with a real Generative AI integration using the OpenAI API.
 
 ## Project Overview
 
@@ -25,6 +25,7 @@ The system analyzes the requirement and generates a structured test suite contai
 * BDD/Gherkin scenarios
 * Playwright automation suggestions
 * Playwright automation code
+* AI-generated QA analysis
 
 ## Example
 
@@ -109,6 +110,9 @@ Generated test suites are exported to:
 
 ```text
 data/generated/test_cases.json
+
+AI analysis:
+data/generated/ai_analysis.json
 ```
 
 This makes the generated results available for further processing, reporting, or integration with other QA tools.
@@ -151,7 +155,7 @@ Test Case Generation
 |
 +-- data/
 |   +-- generated/
-|       +-- reset_password_test_cases.json
+|       +-- ai_analysis.json
 |       +-- test_cases.json
 |
 +-- src/
@@ -182,7 +186,7 @@ Test Case Generation
 | Playwright        | UI test automation generation   |
 | Pandas            | Data processing foundation      |
 | NumPy             | Numerical processing foundation |
-| OpenAI Python SDK | Future LLM integration          |
+| OpenAI Python SDK | Generative AI API integration |
 | Python Dotenv     | Environment configuration       |
 | JSON              | Test result export              |
 | BDD / Gherkin     | Behavior-driven test scenarios  |
@@ -216,6 +220,9 @@ The application generates the test suite and saves the results to:
 
 ```text
 data/generated/test_cases.json
+
+AI analysis:
+data/generated/ai_analysis.json
 ```
 
 ## Running Automated Tests
@@ -236,12 +243,12 @@ The current automated test suite validates:
 
 ## Current Test Results
 
-The current project test suite contains five automated tests.
+The current project test suite contains six automated tests.
 
 Expected result:
 
 ```text
-5 passed
+6 passed
 ```
 
 ## GenAI Integration
@@ -252,24 +259,20 @@ The project includes a dedicated GenAI integration layer:
 src/ai_generator.py
 ```
 
-The current implementation is intentionally a placeholder.
+The current implementation uses a real Generative AI integration through the OpenAI API.
 
-The project is therefore **not currently dependent on an external LLM API** to generate its test cases.
+The project now includes an external LLM API integration for AI-assisted QA analysis.
 
-Instead, the current version establishes the software architecture and QA generation pipeline that can later be connected to a real Generative AI model.
+The rule-based engine and Generative AI layer work together as complementary components of the QA generation pipeline.
 
-### Planned GenAI capabilities
+### Future Improvements
 
-Future versions can include:
+Future versions may include:
 
-* LLM-based requirement analysis
-* AI-generated test cases
-* Intelligent edge-case generation
-* AI-based test prioritization
-* Gherkin generation
-* Test data generation
-* AI-generated Playwright automation
-* Requirement-to-test traceability
+* Structured AI-generated test cases
+* AI-based requirement-to-test traceability
+* AI-generated Playwright Page Objects
+* Automated test coverage analysis
 * AI-assisted test maintenance
 * Comparison between rule-based and LLM-generated test suites
 
@@ -277,5 +280,12 @@ Future versions can include:
 
 This project is part of a broader portfolio exploring the intersection of:
 
-```
-```
+- QA Automation
+- Software Quality Engineering
+- Python
+- Data Science
+- Machine Learning
+- Generative AI
+- AI-driven Testing
+
+

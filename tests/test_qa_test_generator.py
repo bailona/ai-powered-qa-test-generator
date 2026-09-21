@@ -1,4 +1,7 @@
-﻿from src.qa_test_generator import generate_test_cases
+﻿from unittest.mock import MagicMock, patch
+
+from src.qa_test_generator import generate_test_cases
+from src.ai_generator import generate_with_ai
 
 
 REQUIREMENT = "User should be able to reset their password using their registered email."
@@ -45,3 +48,28 @@ def test_automation_code_uses_playwright():
     for test_case in result["test_cases"]:
         assert "playwright" in test_case["automation_code"].lower()
 
+
+def test_generate_with_ai():
+    mock_response = MagicMock()
+
+    mock_response.output_text = "Mocked QA analysis"
+    mock_response.usage.input_tokens = 10
+    mock_response.usage.output_tokens = 20
+    mock_response.usage.total_tokens = 30
+
+    with patch(
+        "src.ai_generator.client.responses.create",
+        return_value=mock_response,
+    ) as mock_create:
+
+        result = generate_with_ai(
+            "User should be able to reset their password."
+        )
+
+    mock_create.assert_called_once()
+
+    assert result["provider"] == "OpenAI"
+    assert result["model"] == "gpt-5.6-luna"
+    assert result["status"] == "connected"
+    assert result["generated_content"] == "Mocked QA analysis"
+    assert result["usage"]["total_tokens"] == 30
